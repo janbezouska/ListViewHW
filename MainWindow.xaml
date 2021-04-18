@@ -1,0 +1,55 @@
+﻿<Window x:Class="ListViewHW.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ListViewHW"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="400"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.7*"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="lvPeople"
+                  Grid.Column="1" Grid.Row="1"
+                  Grid.RowSpan="4"
+                  ItemsSource="{Binding .}"
+                  SelectionChanged="lvPeople_SelectionChanged">
+            <ListView.ItemTemplate>
+            <DataTemplate>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Key}"/>
+                    <TextBlock Text=", "/>
+                    <TextBlock Text="{Binding Value.Surname}"/>
+                </StackPanel>
+            </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel x:Name="spPeople"
+                    Grid.Row="1" Grid.Column="2">
+            <Label Content="Příjmení: " FontSize="15"/>
+            <Label Content="{Binding Surname}"/>
+        </StackPanel>
+        <Label Content="Jméno: " Grid.Row="2" Grid.Column="2" FontSize="15"/>
+        <Label Content="{Binding Name}" Grid.Row="3" Grid.Column="2" FontSize="13"/>
+        <Label Content="D. Narození: " Grid.Row="4" Grid.Column="2" FontSize="15"/>
+        <Label Content="{Binding Birthday}" Grid.Row="5" Grid.Column="2" FontSize="13"/>
+        <Label Content="Rodné č.: " Grid.Row="6" Grid.Column="2" FontSize="15"/>
+        <Label Content="{Binding Id}" Grid.Row="7" Grid.Column="2" FontSize="13"/>
+    </Grid>
+</Window>
