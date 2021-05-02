@@ -28,14 +28,15 @@
         <ListView x:Name="lvPeople"
                   Grid.Column="1" Grid.Row="1"
                   Grid.RowSpan="4"
-                  ItemsSource="{Binding .}"
-                  SelectionChanged="lvPeople_SelectionChanged">
+                  ItemsSource="{Binding People}"
+                  SelectionChanged="lvPeople_SelectionChanged"
+                  MouseDoubleClick="lvPeople_MouseDoubleClick">
             <ListView.ItemTemplate>
             <DataTemplate>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding Key}"/>
+                    <TextBlock Text="{Binding Surname}"/>
                     <TextBlock Text=", "/>
-                    <TextBlock Text="{Binding Value.Surname}"/>
+                    <TextBlock Text="{Binding Name}"/>
                 </StackPanel>
             </DataTemplate>
             </ListView.ItemTemplate>
@@ -48,8 +49,10 @@
         <Label Content="Jméno: " Grid.Row="2" Grid.Column="2" FontSize="15"/>
         <Label Content="{Binding Name}" Grid.Row="3" Grid.Column="2" FontSize="13"/>
         <Label Content="D. Narození: " Grid.Row="4" Grid.Column="2" FontSize="15"/>
-        <Label Content="{Binding Birthday}" Grid.Row="5" Grid.Column="2" FontSize="13"/>
+        <Label Content="{Binding Birthday}" Grid.Row="5" Grid.Column="2" FontSize="13" ContentStringFormat="yyyy-MM-dd"/>
         <Label Content="Rodné č.: " Grid.Row="6" Grid.Column="2" FontSize="15"/>
         <Label Content="{Binding Id}" Grid.Row="7" Grid.Column="2" FontSize="13"/>
+        <Button x:Name="AddBut" Content="Add" Grid.Column="1" Grid.Row="6" Grid.RowSpan="2"
+                Click="AddBut_Click"/>
     </Grid>
 </Window>

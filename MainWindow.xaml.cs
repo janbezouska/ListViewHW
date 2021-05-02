@@ -24,7 +24,7 @@ namespace ListViewHW
     {
       InitializeComponent();
       Person.InitPeople();
-      lvPeople.DataContext = Person.people;
+      lvPeople.DataContext = Person.People;
     }
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -34,8 +34,21 @@ namespace ListViewHW
 
     private void lvPeople_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-      Person person = ((KeyValuePair<string, Person>)(sender as ListView).SelectedItem).Value;
+      Person person = (Person)(sender as ListView).SelectedItem;
       DataContext = person;
+    }
+
+    private void lvPeople_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+      Person person = (Person)(sender as ListView).SelectedItem;
+      NewPerson np = new NewPerson(person);
+      np.ShowDialog();
+    }
+
+    private void AddBut_Click(object sender, RoutedEventArgs e)
+    {
+      NewPerson np = new NewPerson();
+      np.ShowDialog();
     }
   }
 }
